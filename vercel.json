@@ -9,6 +9,16 @@
         }
       ],
       "destination": "https://www.linkedin.com/in/mihaly-furedi/"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "github.mihaly.dev"
+        }
+      ],
+      "destination": "https://github.com/robotkutya"
     }
   ]
 }
