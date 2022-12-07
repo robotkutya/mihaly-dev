@@ -1,7 +1,7 @@
 {
   "name": "mihaly-dev",
   "short_name": "mihaly-dev",
-  "description": "Boring personal blog & portfolio",
+  "description": "Boring personal blog & portfolio for @robotkutya",
   "icons": [
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
