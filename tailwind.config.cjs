@@ -12,8 +12,8 @@ module.exports = {
 					'primary-yellow': '#EBA900'
 			},
 			fontFamily: {
-				'silkscreen': ['Silkscreen', 'ui-sans-serif', 'sans'],
-				'inter': ['Inter', 'ui-sans-serif', 'sans']
+				'silkscreen': ['Silkscreen', 'cursive'],
+				'inter': ['Inter', 'sans-serif']
 			}
 	},
 	plugins: [],
