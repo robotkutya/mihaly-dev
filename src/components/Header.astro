@@ -1,25 +1,20 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+<header class="flex flex-col md:flex-row justify-start md:justify-between flex-wrap cursor-default">
+  <div class="font-silkscreen text-xl flex flex-col xl:flex-row xl:space-x-3">
+    <span class="text-primary-green">Hello,&nbsp;I'm</span><span
+      class="text-primary-blue">Mihaly&nbsp;Furedi</span
+    >
+  </div>
+  <div class="font-silkscreen text-xl flex flex-col xl:flex-row xl:space-x-3">
+    <span class="text-primary-green">From{" "}</span><span
+      class="text-primary-blue">Urbana,&nbsp;IL,&nbsp;USA</span
+    >
+  </div>
+  <div class="font-silkscreen text-xl flex flex-col xl:flex-row xl:space-x-3">
+    <span class="text-primary-green">Located in{" "}</span><span
+      class="text-primary-blue">Budapest,&nbsp;Hungary,&nbsp;EU</span
+    >
+  </div>
 </header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
-</style>
