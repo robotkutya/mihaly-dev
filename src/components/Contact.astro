@@ -1,27 +1,42 @@
 ---
+type Contact = {
+  href: string;
+  text: string;
+};
+
+const contacts: Contact[] = [
+  {
+    href: "mailto:mihaly@mihaly.com",
+    text: "e-mail",
+  },
+  {
+    href: "https://linkedin.mihaly.dev",
+    text: "LinkedIn",
+  },
+  {
+    href: "https://github.mihaly.dev",
+    text: "GitHub (robotkutya)",
+  },
+];
 ---
 
 <section>
   <ul class="font-silkscreen text-xl text-primary-black pt-8 space-y-8">
-    <li>
-      <a
-        href="mailto:mihaly@mihaly.com"
-        class="outline-none ring-offset-4 ring-transparent ring-4 focus:ring-[papayawhip] hover:ring-[papayawhip] underline-offset-4 focus:underline"
-        >&gt;&nbsp;e-mail</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://linkedin.mihaly.dev"
-        class="outline-none ring-offset-4 ring-transparent ring-4 focus:ring-[papayawhip] hover:ring-[papayawhip] underline-offset-4 focus:underline"
-        >&gt;&nbsp;LinkedIn</a>
-    </li>
-    <li>
-      <a
-        href="https://github.mihaly.dev"
-        class="outline-none ring-offset-4 ring-transparent ring-4 focus:ring-[papayawhip] hover:ring-[papayawhip] underline-offset-4 focus:underline"
-        >&gt;&nbsp;GitHub (robotkutya)</a
-      >
-    </li>
+    {
+      contacts.map((contact) => {
+        return (
+          <li>
+            <a
+              href={contact.href}
+              target="_blank"
+              rel="noreferrer"
+              class="outline-none ring-offset-4 ring-transparent ring-4 focus:ring-[papayawhip] hover:ring-[papayawhip] underline-offset-4 focus:underline"
+            >
+              &gt;&nbsp;{contact.text}
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
 </section>

@@ -1,15 +1,33 @@
 ---
+const experiences = [
+  "Alignment with small & large organizations",
+  "Quick-paced development on greenfield projects",
+  "High availability systems on scale",
+  "Integrating with 3rd party solutions",
+  "Modernizing and rebuilding existing codebases",
+  "Having ownership over the product or project",
+  "Collaborating in cross-functional teams",
+];
 ---
 
 <section>
-  <h2 class="font-silkscreen text-xl text-primary-black pb-4 pt-8 md:pb-[44px] xl:pb-[50px]">I Have Experience In</h2>
-  <ul class="font-inter text-base leading-7 text-black lg:space-y-2">
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>Alignment with small & large organizations</li>
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>Quick-paced development on greenfield projects</li>
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>High availability systems on scale</li>
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>Integrating with 3rd party solutions</li>
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>Modernizing and rebuilding existing codebases</li>
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>Having ownership over the product or project</li>
-    <li><span class="font-silkscreen text-xl text-primary-gray">*&nbsp;</span>Collaborating in cross-functional teams</li>
+  <h2
+    class="font-silkscreen text-xl text-primary-black pb-4 pt-8 md:pb-[44px] xl:pb-[50px]"
+  >
+    I Have Experience In
+  </h2>
+  <ul
+    role="list"
+    class="pl-4 space-y-1 list-outside list-['*'] marker:font-silkscreen marker:text-xl marker:text-primary-gray"
+  >
+    {
+      experiences.map((exp) => {
+        return (
+          <li class="pl-2 font-inter text-base leading-7 text-black">
+            {exp}
+          </li>
+        );
+      })
+    }
   </ul>
 </section>
