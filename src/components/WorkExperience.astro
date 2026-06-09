@@ -1,0 +1,75 @@
+---
+type Role = {
+  title: string;
+  company: string;
+  dates: string;
+  duration: string;
+  location: string;
+  description: string;
+};
+
+const roles: Role[] = [
+  {
+    title: "Senior Software Engineer",
+    company: "Example Company",
+    dates: "Jan 2022 - Present",
+    duration: "3 yrs",
+    location: "Budapest, Hungary · Remote",
+    description:
+      "Built and maintained product-facing web applications across the full stack, from API design to polished user experiences.",
+  },
+  {
+    title: "Frontend Engineer",
+    company: "Another Example Company",
+    dates: "Mar 2019 - Dec 2021",
+    duration: "2 yrs 10 mos",
+    location: "Budapest, Hungary",
+    description:
+      "Worked in a React and TypeScript ecosystem on reusable interfaces, third-party integrations, and fast-moving product delivery.",
+  },
+  {
+    title: "Software Developer",
+    company: "Early Stage Product Team",
+    dates: "Sep 2017 - Feb 2019",
+    duration: "1 yr 6 mos",
+    location: "Hungary",
+    description:
+      "Helped ship greenfield features, maintain existing systems, and turn ambiguous requirements into working software.",
+  },
+];
+---
+
+<section class="md:col-span-2 pt-8 md:pt-12 xl:pt-16">
+  <h2 class="font-silkscreen text-xl text-primary-black pb-6 md:pb-8">
+    Professional Experience
+  </h2>
+  <ol class="space-y-8">
+    {
+      roles.map((role) => {
+        return (
+          <li class="grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-12 xl:gap-24 border-t border-primary-light-gray pt-6">
+            <div>
+              <h3 class="font-silkscreen text-lg text-primary-blue">
+                {role.title}
+              </h3>
+              <p class="font-inter text-base leading-7 text-black">
+                {role.company}
+              </p>
+            </div>
+            <div>
+              <p class="font-inter text-base leading-7 text-primary-gray">
+                {role.dates} · {role.duration}
+              </p>
+              <p class="font-inter text-base leading-7 text-primary-gray">
+                {role.location}
+              </p>
+              <p class="font-inter text-base leading-7 text-black pt-3">
+                {role.description}
+              </p>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
