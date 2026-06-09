@@ -1,42 +1,7 @@
 ---
-type Role = {
-  title: string;
-  company: string;
-  dates: string;
-  duration: string;
-  location: string;
-  description: string;
-};
+import { profile } from '../data/profile';
 
-const roles: Role[] = [
-  {
-    title: "Senior Software Engineer",
-    company: "Example Company",
-    dates: "Jan 2022 - Present",
-    duration: "3 yrs",
-    location: "Budapest, Hungary · Remote",
-    description:
-      "Built and maintained product-facing web applications across the full stack, from API design to polished user experiences.",
-  },
-  {
-    title: "Frontend Engineer",
-    company: "Another Example Company",
-    dates: "Mar 2019 - Dec 2021",
-    duration: "2 yrs 10 mos",
-    location: "Budapest, Hungary",
-    description:
-      "Worked in a React and TypeScript ecosystem on reusable interfaces, third-party integrations, and fast-moving product delivery.",
-  },
-  {
-    title: "Software Developer",
-    company: "Early Stage Product Team",
-    dates: "Sep 2017 - Feb 2019",
-    duration: "1 yr 6 mos",
-    location: "Hungary",
-    description:
-      "Helped ship greenfield features, maintain existing systems, and turn ambiguous requirements into working software.",
-  },
-];
+const roles = profile.experience;
 ---
 
 <section class="md:col-span-2 pt-8 md:pt-12 xl:pt-16">
@@ -60,12 +25,20 @@ const roles: Role[] = [
               <p class="font-inter text-base leading-7 text-primary-gray">
                 {role.dates} · {role.duration}
               </p>
-              <p class="font-inter text-base leading-7 text-primary-gray">
-                {role.location}
-              </p>
-              <p class="font-inter text-base leading-7 text-primary-black pt-3">
-                {role.description}
-              </p>
+              {
+                role.location && (
+                  <p class="font-inter text-base leading-7 text-primary-gray">
+                    {role.location}
+                  </p>
+                )
+              }
+              {
+                role.description && (
+                  <p class="font-inter text-base leading-7 text-primary-black pt-3">
+                    {role.description}
+                  </p>
+                )
+              }
             </div>
           </li>
         );

@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "load:linkedin-export": "node scripts/load-linkedin-export.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check && tsc --noEmit"
@@ -21,7 +22,8 @@
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.4",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

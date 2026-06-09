@@ -1,4 +1,5 @@
 ---
+import { profile } from '../data/profile';
 import ThemeToggle from './ThemeToggle.astro';
 
 type Header = {
@@ -6,36 +7,21 @@ type Header = {
   blue: string;
 };
 
-type Contact = {
-  href: string;
-  text: string;
-};
+const name = profile.identity.name.replaceAll(' ', '\u00a0');
+const location = profile.identity.location.replaceAll(' ', '\u00a0');
 
 const headers: Header[] = [
   {
     green: "Hello,\xa0I'm",
-    blue: "Mihaly\xa0Furedi",
+    blue: name,
   },
   {
     green: "Located in",
-    blue: "Budapest,\xa0Hungary,\xa0EU",
+    blue: location,
   },
 ];
 
-const contacts: Contact[] = [
-  {
-    href: "mailto:mihaly@mihaly.dev",
-    text: "e-mail",
-  },
-  {
-    href: "https://linkedin.mihaly.dev",
-    text: "LinkedIn",
-  },
-  {
-    href: "https://github.mihaly.dev",
-    text: "GitHub",
-  },
-];
+const contacts = profile.links.filter((link) => link.showInHeader);
 ---
 
 <header
@@ -57,7 +43,7 @@ const contacts: Contact[] = [
                 rel="noreferrer"
                 class="cursor-pointer outline-hidden ring-offset-4 ring-offset-[var(--color-page)] ring-transparent ring-4 transition-colors hover:text-primary-yellow focus:text-primary-yellow focus:ring-primary-yellow underline-offset-4"
               >
-                <span class="text-primary-yellow">&gt;</span>&nbsp;{contact.text}
+                <span class="text-primary-yellow">&gt;</span>&nbsp;{contact.label}
               </a>
             </li>
           );

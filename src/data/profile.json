@@ -1,0 +1,171 @@
+{
+  "identity": {
+    "name": "Mihaly Furedi",
+    "location": "Budapest, Hungary, EU",
+    "website": "https://www.mihaly.dev",
+    "email": "mihaly@mihaly.dev"
+  },
+  "headline": "Product-minded TypeScript and React engineer building practical software across the stack.",
+  "summary": [
+    "I love to code, solve problems, and build. I'm a Typescript-React enjoyer and a stan for the new school ecosystem around it.",
+    "More of a luthier than a lumberjack when it comes to coding, but never afraid to get my hands dirty. I do believe agentic coding is the present, but the deep human understanding of a problem space and the World surrounding it is irreplaceable.",
+    "A little bit addicted to coffee and online chess. Started learning math and comp-sci again. I want to know how the sausage is made, from first principles."
+  ],
+  "skills": [
+    "TypeScript",
+    "React",
+    "Frontend architecture",
+    "Full-stack product engineering",
+    "API design",
+    "Integrations",
+    "Design systems",
+    "Agentic workflows",
+    "AI-assisted engineering"
+  ],
+  "experienceHighlights": [
+    "Working across startups and larger organizations",
+    "Product ownership and technical direction",
+    "Greenfield builds and legacy modernization",
+    "End-to-end responsibility across the stack",
+    "API design, integrations, and operations",
+    "UI/UX design and implementation",
+    "Build-vs-buy and vendor decisions",
+    "Agentic workflows and AI-assisted engineering"
+  ],
+  "interests": [
+    "Coffee",
+    "Online chess",
+    "Mathematics",
+    "Computer science",
+    "First-principles learning"
+  ],
+  "links": [
+    {
+      "kind": "email",
+      "label": "e-mail",
+      "href": "mailto:mihaly@mihaly.dev",
+      "showInHeader": true
+    },
+    {
+      "kind": "linkedin",
+      "label": "LinkedIn",
+      "href": "https://linkedin.mihaly.dev",
+      "showInHeader": true
+    },
+    {
+      "kind": "github",
+      "label": "GitHub",
+      "href": "https://github.mihaly.dev",
+      "showInHeader": true
+    }
+  ],
+  "experience": [
+    {
+      "company": "Eötvös Loránd University",
+      "title": "Senior Student of Craft",
+      "dates": "Sep 2025 - Present",
+      "duration": "10 mos",
+      "location": "Budapest, Hungary",
+      "description": "I want to know how the sausage is made, from first principles.",
+      "startedOn": "Sep 2025",
+      "finishedOn": null,
+      "source": "linkedin"
+    },
+    {
+      "company": "improveme.io",
+      "title": "Co-Founder",
+      "dates": "Sep 2025 - Present",
+      "duration": "10 mos",
+      "location": "Budapest, Hungary",
+      "description": "A passion project with two friends; improveme.io is a webapp to do ad-hoc, project-based peer feedback. At one point we even had more than zero (~300) users! :) It was a great opportunity to learn the T3 stack. Now it is a great project to experiment and build with agentic workflows and AI solutions.",
+      "startedOn": "Sep 2025",
+      "finishedOn": null,
+      "source": "linkedin"
+    },
+    {
+      "company": "SPARETECH",
+      "title": "Senior Frontend Developer",
+      "dates": "Mar 2023 - Sep 2025",
+      "duration": "2 yrs 7 mos",
+      "location": "",
+      "description": "I was part of the “Foundations” team Built features around search, user management and data insights Introduced a new design system and component library Lead modularization effort on the front-end",
+      "startedOn": "Mar 2023",
+      "finishedOn": "Sep 2025",
+      "source": "linkedin"
+    },
+    {
+      "company": "Zone14.ai",
+      "title": "Full Stack Engineer",
+      "dates": "Aug 2021 - Mar 2023",
+      "duration": "1 yr 8 mos",
+      "location": "",
+      "description": "As a solo dev I was responsible for the “Replay App”, a video viewing and annotating platform Built a custom video player with live streaming, offline playback, and an interactive annotation tool Rearchitected and rebuilt existing parts of the platform",
+      "startedOn": "Aug 2021",
+      "finishedOn": "Mar 2023",
+      "source": "linkedin"
+    },
+    {
+      "company": "GotPhoto",
+      "title": "Frontend Developer",
+      "dates": "Aug 2020 - Aug 2021",
+      "duration": "1 yr 1 mo",
+      "location": "",
+      "description": "Worked on decoupling the “admin” interface from a PHP monolith I was the product owner responsible for the day-to-day operation and rituals of a cross-functional team of 6",
+      "startedOn": "Aug 2020",
+      "finishedOn": "Aug 2021",
+      "source": "linkedin"
+    },
+    {
+      "company": "Pentech",
+      "title": "Frontend Developer",
+      "dates": "Jan 2020 - Aug 2020",
+      "duration": "8 mos",
+      "location": "",
+      "description": "Worked mostly on the frontend and a bit on the backend of a factoring service for an early-stage fintech startup Dabbled in being the product owner for a small team of 3",
+      "startedOn": "Jan 2020",
+      "finishedOn": "Aug 2020",
+      "source": "linkedin"
+    },
+    {
+      "company": "Prezi",
+      "title": "Software Engineer",
+      "dates": "Apr 2017 - Jan 2020",
+      "duration": "2 yrs 10 mos",
+      "location": "Budapest",
+      "description": "Provided integration, automation, and tooling for all of Prezi’s go-to-market teams.",
+      "startedOn": "Apr 2017",
+      "finishedOn": "Jan 2020",
+      "source": "linkedin"
+    },
+    {
+      "company": "Prezi",
+      "title": "Full Stack Engineer",
+      "dates": "Apr 2017 - Dec 2019",
+      "duration": "2 yrs 9 mos",
+      "location": "",
+      "description": "I was part of the “Chain Bridge” team Worked on integration, automation, and tooling for all of Prezi’s go-to-market teams Worked on licensing and payment systems",
+      "startedOn": "Apr 2017",
+      "finishedOn": "Dec 2019",
+      "source": "linkedin"
+    },
+    {
+      "company": "Prezi",
+      "title": "Support Specialist",
+      "dates": "Nov 2015 - Apr 2017",
+      "duration": "1 yr 6 mos",
+      "location": "",
+      "description": "\"Hi, this is Michael from Prezi, how can I help you?\" :) I was doing night shift billing, then T2 tech support. During the day, I was learning how to code.",
+      "startedOn": "Nov 2015",
+      "finishedOn": "Apr 2017",
+      "source": "linkedin"
+    }
+  ],
+  "source": {
+    "linkedinPositions": {
+      "path": "linked-in-dump/Positions.csv",
+      "loadedAt": "2026-06-09T16:20:16.052Z",
+      "rowCount": 9
+    }
+  },
+  "lastUpdated": "2026-06-09T16:20:16.052Z"
+}
