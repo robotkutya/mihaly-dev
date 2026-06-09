@@ -8,7 +8,13 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://www.mihaly.dev',
   adapter: vercel(),
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({
+    customPages: [
+      'https://www.mihaly.dev/AGENTS.md',
+      'https://www.mihaly.dev/profile.json',
+      'https://www.mihaly.dev/profile.md',
+    ],
+  })],
   server: {
     port: 1337
   },
