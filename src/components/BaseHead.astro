@@ -13,6 +13,27 @@ const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<script is:inline>
+  (() => {
+    const storageKey = "theme";
+    const getSystemTheme = () =>
+      window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+    try {
+      const storedMode = localStorage.getItem(storageKey);
+      const mode =
+        storedMode === "dark" || storedMode === "light" || storedMode === "system"
+          ? storedMode
+          : "system";
+
+      document.documentElement.dataset.themeMode = mode;
+      document.documentElement.dataset.theme = mode === "system" ? getSystemTheme() : mode;
+    } catch {
+      document.documentElement.dataset.themeMode = "system";
+      document.documentElement.dataset.theme = getSystemTheme();
+    }
+  })();
+</script>
 <link rel="icon" href="/favicon.ico" sizes="any" />
 {
   import.meta.env.DEV ? (

@@ -1,2 +1,43 @@
 @import "tailwindcss";
 @config "../../tailwind.config.cjs";
+
+:root {
+  color-scheme: light;
+  --color-page: #f7f7f7;
+  --color-primary-black: #181818;
+  --color-primary-gray: #979797;
+  --color-primary-light-gray: #cfcfcf;
+  --color-primary-green: #00bb56;
+  --color-primary-blue: #0029ff;
+  --color-primary-yellow: #eba900;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-page: #181818;
+  --color-primary-black: #f2efe8;
+  --color-primary-gray: #a8a8a8;
+  --color-primary-light-gray: #3a3a3a;
+  --color-primary-green: #38e981;
+  --color-primary-blue: #8da2ff;
+  --color-primary-yellow: #f2bd24;
+}
+
+html,
+body {
+  background: var(--color-page);
+}
+
+body {
+  color: var(--color-primary-black);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+[data-theme-icon] {
+  opacity: 0.35;
+}
+
+:root[data-theme="light"] [data-theme-icon="sun"],
+:root[data-theme="dark"] [data-theme-icon="moon"] {
+  opacity: 1;
+}

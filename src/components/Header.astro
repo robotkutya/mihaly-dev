@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 type Header = {
   green: string;
   blue: string;
@@ -53,9 +55,9 @@ const contacts: Contact[] = [
                 href={contact.href}
                 target="_blank"
                 rel="noreferrer"
-                class="outline-hidden ring-offset-4 ring-transparent ring-4 focus:ring-[papayawhip] hover:ring-[papayawhip] underline-offset-4 focus:underline"
+                class="cursor-pointer outline-hidden ring-offset-4 ring-offset-[var(--color-page)] ring-transparent ring-4 transition-colors hover:text-primary-yellow focus:text-primary-yellow focus:ring-primary-yellow underline-offset-4"
               >
-                &gt;&nbsp;{contact.text}
+                <span class="text-primary-yellow">&gt;</span>&nbsp;{contact.text}
               </a>
             </li>
           );
@@ -63,8 +65,11 @@ const contacts: Contact[] = [
       }
     </ul>
   </div>
-  <div class="font-silkscreen text-xl flex flex-col xl:flex-row xl:space-x-3">
-    <span class="text-primary-green">{headers[1].green}</span>
-    <span class="text-primary-blue">{headers[1].blue}</span>
+  <div class="md:flex md:flex-col md:items-end">
+    <div class="font-silkscreen text-xl flex flex-col xl:flex-row xl:space-x-3">
+      <span class="text-primary-green">{headers[1].green}</span>
+      <span class="text-primary-blue">{headers[1].blue}</span>
+    </div>
+    <ThemeToggle />
   </div>
 </header>

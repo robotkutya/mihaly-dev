@@ -4,12 +4,12 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-					'primary-black': '#181818',
-					'primary-gray': '#979797',
-					'primary-light-gray': '#CFCFCF',
-					'primary-green': '#00BB56',
-					'primary-blue': '#0029FF',
-					'primary-yellow': '#EBA900'
+					'primary-black': 'var(--color-primary-black)',
+					'primary-gray': 'var(--color-primary-gray)',
+					'primary-light-gray': 'var(--color-primary-light-gray)',
+					'primary-green': 'var(--color-primary-green)',
+					'primary-blue': 'var(--color-primary-blue)',
+					'primary-yellow': 'var(--color-primary-yellow)'
 			},
 			fontFamily: {
 				'silkscreen': ['Silkscreen', 'cursive'],
