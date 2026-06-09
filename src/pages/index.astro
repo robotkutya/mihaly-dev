@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
+import AskMihaly from '../components/AskMihaly.astro';
 import AboutMe from '../components/AboutMe.astro';
 import ExperienceList from '../components/ExperienceList.astro';
 import WorkExperience from '../components/WorkExperience.astro';
@@ -14,6 +15,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 	</head>
 	<body class="max-w-6xl mx-auto px-2 md:px-4 pt-4 md:py-8 pb-96 selection:bg-[papayawhip]">
 		<Header />
+		<AskMihaly />
 		<main class="grid md:grid-cols-2 md:gap-12 xl:gap-24 items-start md:pt-10 xl:pt-20">
 			<AboutMe />
 			<ExperienceList />

@@ -1,0 +1,237 @@
+---
+import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
+---
+
+<section
+  class="font-silkscreen my-8 md:my-10 py-5 md:py-6"
+  aria-label="Ask Mihaly"
+>
+  <form data-ask-mihaly-form class="space-y-4">
+    <label class="sr-only" for="ask-mihaly-question">Ask Mihaly</label>
+    <div
+      class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 text-base md:text-xl"
+    >
+      <span class="text-primary-green" aria-hidden="true">&gt;</span>
+      <div class="relative">
+        <input
+          id="ask-mihaly-question"
+          name="question"
+          type="text"
+          maxlength={ASK_MIHALY_QUESTION_MAX_LENGTH}
+          autocomplete="off"
+          autofocus
+          data-ask-mihaly-input
+          class="ask-mihaly-input w-full bg-transparent text-primary-black outline-none caret-transparent"
+        />
+        <span
+          class="ask-mihaly-cursor absolute top-0 left-0 pointer-events-none text-primary-blue whitespace-pre"
+          data-ask-mihaly-cursor
+          aria-hidden="true">_</span
+        >
+      </div>
+
+      <button
+        type="submit"
+        data-ask-mihaly-submit
+        class="text-sm md:text-base outline-hidden ring-offset-4 ring-offset-[var(--color-page)] ring-transparent ring-4 transition-colors hover:text-primary-yellow focus:text-primary-yellow focus:ring-primary-yellow disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+      >
+        ask <span class="text-primary-yellow">↵</span>
+      </button>
+    </div>
+    <p
+      data-ask-mihaly-state
+      class="min-h-6 text-sm md:text-base text-primary-gray"
+      aria-live="polite"
+    >
+    </p>
+    <div
+      data-ask-mihaly-question
+      class="border-l-4 border-primary-blue pl-3 py-1 font-silkscreen text-sm md:text-base text-primary-gray hidden"
+      aria-live="polite"
+    ></div>
+    <pre
+      data-ask-mihaly-answer
+      class="font-inter whitespace-pre-wrap text-base leading-7 text-primary-black"
+      aria-live="polite">
+    </pre>
+  </form>
+</section>
+
+<style>
+  .ask-mihaly-cursor {
+    animation: none;
+  }
+
+  .ask-mihaly-input:focus + .ask-mihaly-cursor {
+    animation: ask-mihaly-blink 1s steps(1, end) infinite;
+  }
+
+  .ask-mihaly-input:disabled {
+    opacity: 1;
+  }
+
+  .ask-mihaly-input:disabled + .ask-mihaly-cursor {
+    display: none;
+  }
+
+  @keyframes ask-mihaly-blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  import { ASK_MIHALY_FALLBACK, ASK_MIHALY_RATE_LIMIT_MESSAGE } from "../lib/ai-widget/constants";
+
+  const form = document.querySelector("[data-ask-mihaly-form]");
+  const input = document.querySelector("[data-ask-mihaly-input]") as HTMLInputElement | null;
+  const submit = document.querySelector("[data-ask-mihaly-submit]");
+  const state = document.querySelector("[data-ask-mihaly-state]");
+  const answer = document.querySelector("[data-ask-mihaly-answer]");
+  const questionEl = document.querySelector("[data-ask-mihaly-question]");
+
+  const cursor = document.querySelector("[data-ask-mihaly-cursor]") as HTMLElement | null;
+  const measure = document.createElement("span");
+  measure.style.cssText =
+    "position:absolute;top:0;left:0;visibility:hidden;white-space:pre;pointer-events:none;";
+  input?.parentNode?.appendChild(measure);
+
+  function syncCursorPosition() {
+    if (!cursor || !input || !measure) return;
+    const styles = getComputedStyle(input);
+    measure.style.fontFamily = styles.fontFamily;
+    measure.style.fontSize = styles.fontSize;
+    measure.style.fontWeight = styles.fontWeight;
+    measure.style.fontStyle = styles.fontStyle;
+    measure.style.letterSpacing = styles.letterSpacing;
+    measure.textContent = input.value.substring(0, input.selectionEnd ?? undefined);
+    const textWidth = measure.textContent.length > 0 ? measure.offsetWidth : 0;
+    const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+    cursor.style.left = `${textWidth + paddingLeft - input.scrollLeft}px`;
+  }
+
+  if (input) {
+    input.addEventListener("input", syncCursorPosition);
+    input.addEventListener("keyup", syncCursorPosition);
+    input.addEventListener("click", syncCursorPosition);
+    syncCursorPosition();
+  }
+
+  if (
+    form instanceof HTMLFormElement &&
+    input instanceof HTMLInputElement &&
+    submit instanceof HTMLButtonElement &&
+    state instanceof HTMLElement &&
+    answer instanceof HTMLElement
+  ) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const question = input.value.trim().slice(0, input.maxLength);
+
+      if (!question) {
+        state.textContent = "try asking about mihaly";
+        return;
+      }
+
+      input.value = question;
+      input.disabled = true;
+      submit.disabled = true;
+      answer.textContent = "";
+      questionEl?.classList.add("hidden");
+      const startTime = Date.now();
+      const spinFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+      let spinIndex = 0;
+      state.textContent = `${spinFrames[0]} thinking`;
+
+      const thinkingInterval = setInterval(() => {
+        spinIndex = (spinIndex + 1) % spinFrames.length;
+        state.textContent = `${spinFrames[spinIndex]} thinking`;
+      }, 80);
+
+      function stopThinking() {
+        clearInterval(thinkingInterval);
+      }
+
+      try {
+        const response = await fetch("/api/ask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question }),
+        });
+
+        if (response.status === 429) {
+          stopThinking();
+          state.textContent = "";
+          answer.textContent = ASK_MIHALY_RATE_LIMIT_MESSAGE;
+          return;
+        }
+
+        if (!response.ok || !response.body) {
+          throw new Error("Ask Mihaly request failed.");
+        }
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let receivedChunk = false;
+
+        while (true) {
+          const { done, value } = await reader.read();
+
+          if (done) {
+            break;
+          }
+
+          const chunk = decoder.decode(value, { stream: true });
+
+          if (chunk.length > 0) {
+            if (!receivedChunk) {
+              receivedChunk = true;
+              stopThinking();
+              const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+              state.textContent = `+ thought: ${elapsed}s`;
+              if (questionEl) {
+                questionEl.textContent = question;
+                questionEl.classList.remove("hidden");
+              }
+            }
+
+            answer.textContent += chunk;
+          }
+        }
+
+        const finalChunk = decoder.decode();
+
+        if (finalChunk.length > 0) {
+          answer.textContent += finalChunk;
+        }
+
+        if (!receivedChunk && answer.textContent.trim().length === 0) {
+          stopThinking();
+          answer.textContent = ASK_MIHALY_FALLBACK;
+          return;
+        }
+      } catch {
+        stopThinking();
+        state.textContent = "";
+        answer.textContent = ASK_MIHALY_FALLBACK;
+        return;
+      }
+
+      input.value = "";
+      syncCursorPosition();
+      input.disabled = false;
+      submit.disabled = false;
+      input.focus();
+    });
+  }
+</script>
