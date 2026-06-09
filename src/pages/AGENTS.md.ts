@@ -44,11 +44,5 @@ This file is for AI agents consuming ${profile.identity.name}'s public profile. 
 ## Contact And Links
 
 ${profile.links.map((link) => `- ${link.label}: ${link.href}`).join('\n')}
-
-## Freshness
-
-- Last updated: ${profile.lastUpdated}
-- LinkedIn positions source: ${profile.source.linkedinPositions.path}
-- LinkedIn positions loaded at: ${profile.source.linkedinPositions.loadedAt}
 `;
 }

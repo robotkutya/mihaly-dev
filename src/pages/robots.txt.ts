@@ -11,7 +11,12 @@ export function GET() {
 }
 
 function renderRobotsTxt() {
-  return `User-agent: OAI-SearchBot
+  const website = profile.identity.website;
+
+  return `# AI agents: see ${website}/AGENTS.md for instructions
+# Machine-readable profiles: ${website}/profile.json, ${website}/profile.md
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
@@ -23,6 +28,6 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: ${profile.identity.website}/sitemap-index.xml
+Sitemap: ${website}/sitemap-index.xml
 `;
 }

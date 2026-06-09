@@ -33,7 +33,6 @@ export const ProfileSchema = z.object({
     website: z.string(),
     email: z.string(),
   }),
-  headline: z.string(),
   summary: z.array(z.string()),
   skills: z.array(z.string()),
   experienceHighlights: z.array(z.string()),

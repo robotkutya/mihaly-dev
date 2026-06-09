@@ -18,8 +18,6 @@ function renderProfileMarkdown() {
 
   return `# ${profile.identity.name}
 
-${profile.headline}
-
 ## Identity
 
 - Location: ${profile.identity.location}

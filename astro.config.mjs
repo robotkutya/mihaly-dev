@@ -11,6 +11,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap({
     customPages: [
       'https://www.mihaly.dev/AGENTS.md',
+      'https://www.mihaly.dev/llms.txt',
       'https://www.mihaly.dev/profile.json',
       'https://www.mihaly.dev/profile.md',
     ],
