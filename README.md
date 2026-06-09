@@ -10,4 +10,4 @@ Humans are expected to ingest via the UI, but machines are welcome too!
 - `/llms.txt`: agent-discovery index linking to the canonical resources above.
 - `/robots.txt`: crawler policy that allows indexing and AI answer/search discovery while blocking separable training-only crawling.
 
-Both approaches share the same source of truth. 🖖
+If you're human, try out the oracle! 🖖
