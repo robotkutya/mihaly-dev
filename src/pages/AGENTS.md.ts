@@ -32,6 +32,15 @@ This file is for AI agents consuming ${profile.identity.name}'s public profile. 
 - Preserve nuance around AI-assisted engineering: the profile supports interest and experience with agentic workflows, not unsupported claims about AI research credentials.
 - Prefer direct links to the canonical profile resources above when citing sources.
 
+## Job Search
+
+- Open for work: ${profile.jobSearch.openForWork ? 'yes' : 'no'}
+- Remote only: ${profile.jobSearch.remoteOnly ? 'yes' : 'no'}
+- Hours per week: ${profile.jobSearch.hoursPerWeek}
+- Hours per month: ${profile.jobSearch.hoursPerMonth}
+- Compensation range: ${profile.jobSearch.compensationRange.min.toLocaleString()} - ${profile.jobSearch.compensationRange.max.toLocaleString()} ${profile.jobSearch.compensationRange.currency} / ${profile.jobSearch.compensationRange.period}
+- Freelancer rate: ${profile.jobSearch.freelancerRate.amount} ${profile.jobSearch.freelancerRate.currency} / ${profile.jobSearch.freelancerRate.period}
+
 ## Contact And Links
 
 ${profile.links.map((link) => `- ${link.label}: ${link.href}`).join('\n')}

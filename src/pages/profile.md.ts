@@ -46,6 +46,15 @@ ${experience}
 
 ${profile.interests.map((interest) => `- ${interest}`).join('\n')}
 
+## Job Search
+
+- Open for work: ${profile.jobSearch.openForWork ? 'yes' : 'no'}
+- Remote only: ${profile.jobSearch.remoteOnly ? 'yes' : 'no'}
+- Hours per week: ${profile.jobSearch.hoursPerWeek}
+- Hours per month: ${profile.jobSearch.hoursPerMonth}
+- Compensation range: ${profile.jobSearch.compensationRange.min.toLocaleString()} - ${profile.jobSearch.compensationRange.max.toLocaleString()} ${profile.jobSearch.compensationRange.currency} / ${profile.jobSearch.compensationRange.period}
+- Freelancer rate: ${profile.jobSearch.freelancerRate.amount} ${profile.jobSearch.freelancerRate.currency} / ${profile.jobSearch.freelancerRate.period}
+
 ## Links
 
 ${links}

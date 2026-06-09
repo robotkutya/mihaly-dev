@@ -40,6 +40,23 @@ export const ProfileSchema = z.object({
   interests: z.array(z.string()),
   links: z.array(ProfileLinkSchema),
   experience: z.array(ExperienceRoleSchema),
+  jobSearch: z.object({
+    openForWork: z.literal(true),
+    remoteOnly: z.literal(true),
+    hoursPerWeek: z.number(),
+    hoursPerMonth: z.number(),
+    compensationRange: z.object({
+      min: z.number(),
+      max: z.number(),
+      currency: z.string(),
+      period: z.string(),
+    }),
+    freelancerRate: z.object({
+      amount: z.number(),
+      currency: z.string(),
+      period: z.string(),
+    }),
+  }),
   source: z.object({
     linkedinPositions: z.object({
       path: z.string(),
