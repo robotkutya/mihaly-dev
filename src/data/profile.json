@@ -61,7 +61,7 @@
   "experience": [
     {
       "company": "Eötvös Loránd University",
-      "title": "Senior Student of Craft",
+      "title": "Senior Student",
       "dates": "Sep 2025 - Present",
       "duration": "10 mos",
       "location": "Budapest, Hungary",
@@ -76,7 +76,7 @@
       "dates": "Sep 2025 - Present",
       "duration": "10 mos",
       "location": "Budapest, Hungary",
-      "description": "A passion project with two friends; improveme.io is a webapp to do ad-hoc, project-based peer feedback. At one point we even had more than zero (~300) users! :) It was a great opportunity to learn the T3 stack. Now it is a great project to experiment and build with agentic workflows and AI solutions.",
+      "description": "A passion project with two friends, improveme.io is a webapp to do ad-hoc, project-based peer feedback. At one point we even had more than zero (~300) users! :) It started as a great opportunity to learn the T3 stack. Now it is a great project to experiment with agentic workflows and integrating AI to an already established product.",
       "startedOn": "Sep 2025",
       "finishedOn": null,
       "source": "linkedin"
@@ -86,19 +86,19 @@
       "title": "Senior Frontend Developer",
       "dates": "Mar 2023 - Sep 2025",
       "duration": "2 yrs 7 mos",
-      "location": "",
-      "description": "I was part of the \"Foundations\" team. Built features around search, user management and data insights. Introduced a new design system and component library. Led modularization effort on the front-end",
+      "location": "Berlin, Germany",
+      "description": "I was part of the “Foundations” team. Built features around search, user management and data insights. Introduced a new design system and component library. Led modularization effort on the front-end.",
       "startedOn": "Mar 2023",
       "finishedOn": "Sep 2025",
       "source": "linkedin"
     },
     {
       "company": "Zone14.ai",
-      "title": "Full Stack Engineer",
+      "title": "Full-Stack Engineer",
       "dates": "Aug 2021 - Mar 2023",
       "duration": "1 yr 8 mos",
-      "location": "",
-      "description": "As a solo dev I was responsible for the \"Replay App\", a video viewing and annotating platform. Built a custom video player with live streaming, offline playback, and an interactive annotation tool. Rearchitected and rebuilt existing parts of the platform",
+      "location": "Vienna, Austria",
+      "description": "As a solo dev I was responsible for the “Replay App”, a video viewing and annotating platform. Built a custom video player with live streaming, offline playback, and an interactive annotation tool. Rearchitected and rebuilt existing parts of the platform.",
       "startedOn": "Aug 2021",
       "finishedOn": "Mar 2023",
       "source": "linkedin"
@@ -108,8 +108,8 @@
       "title": "Frontend Developer",
       "dates": "Aug 2020 - Aug 2021",
       "duration": "1 yr 1 mo",
-      "location": "",
-      "description": "Worked on decoupling the \"admin\" interface from a PHP monolith. I was the product owner responsible for the day-to-day operation and rituals of a cross-functional team of 6",
+      "location": "Berlin, Germany",
+      "description": "Worked on decoupling the “admin” interface from a PHP monolith. I was the product owner responsible for the day-to-day operation and rituals of a cross-functional team of 6.",
       "startedOn": "Aug 2020",
       "finishedOn": "Aug 2021",
       "source": "linkedin"
@@ -119,30 +119,19 @@
       "title": "Frontend Developer",
       "dates": "Jan 2020 - Aug 2020",
       "duration": "8 mos",
-      "location": "",
-      "description": "Worked mostly on the frontend and a bit on the backend of a factoring service for an early-stage fintech startup. Dabbled in being the product owner for a small team of 3",
+      "location": "Budapest, Hungary",
+      "description": "Worked mostly on the frontend and a bit on the backend of a factoring service for an early-stage fintech startup. Dabbled in being the product owner for a small team of 3.",
       "startedOn": "Jan 2020",
       "finishedOn": "Aug 2020",
       "source": "linkedin"
     },
     {
       "company": "Prezi",
-      "title": "Software Engineer",
-      "dates": "Apr 2017 - Jan 2020",
-      "duration": "2 yrs 10 mos",
-      "location": "Budapest",
-      "description": "Provided integration, automation, and tooling for all of Prezi's go-to-market teams.",
-      "startedOn": "Apr 2017",
-      "finishedOn": "Jan 2020",
-      "source": "linkedin"
-    },
-    {
-      "company": "Prezi",
-      "title": "Full Stack Engineer",
+      "title": "Full-Stack Engineer",
       "dates": "Apr 2017 - Dec 2019",
       "duration": "2 yrs 9 mos",
-      "location": "",
-      "description": "I was part of the \"Chain Bridge\" team. Worked on integration, automation, and tooling for all of Prezi's go-to-market teams. Worked on licensing and payment systems",
+      "location": "Budapest, Hungary",
+      "description": "I was part of the “Chain Bridge” team. Worked on integration, automation, and tooling for all of Prezi’s go-to-market teams. Worked on licensing and payment systems.",
       "startedOn": "Apr 2017",
       "finishedOn": "Dec 2019",
       "source": "linkedin"
@@ -152,7 +141,7 @@
       "title": "Support Specialist",
       "dates": "Nov 2015 - Apr 2017",
       "duration": "1 yr 6 mos",
-      "location": "",
+      "location": "Budapest, Hungary",
       "description": "\"Hi, this is Michael from Prezi, how can I help you?\" :) I was doing night shift billing, then T2 tech support. During the day, I was learning how to code.",
       "startedOn": "Nov 2015",
       "finishedOn": "Apr 2017",
@@ -179,9 +168,9 @@
   "source": {
     "linkedinPositions": {
       "path": "linked-in-dump/Positions.csv",
-      "loadedAt": "2026-06-09T16:20:16.052Z",
-      "rowCount": 9
+      "loadedAt": "2026-06-10T14:44:38.637Z",
+      "rowCount": 8
     }
   },
-  "lastUpdated": "2026-06-09T16:20:16.052Z"
+  "lastUpdated": "2026-06-10T14:44:38.637Z"
 }
