@@ -54,7 +54,7 @@ export async function POST({ request }: { request: Request }) {
   const credits = await checkGatewayCredits();
 
   if (!credits.ok) {
-    return textResponse(credits.message);
+    return textResponse(credits.message, { status: 503 });
   }
 
   const gatewayToken = getGatewayAuthToken();

@@ -143,97 +143,114 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
         return;
       }
 
-      input.value = question;
-      input.disabled = true;
-      submit.disabled = true;
-      answer.textContent = "";
-      questionEl?.classList.add("hidden");
-      const startTime = Date.now();
-      const spinFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
-      let spinIndex = 0;
-      state.textContent = `${spinFrames[0]} thinking`;
+      const MAX_RETRIES = 2;
+      const RETRY_DELAY_MS = 1500;
+      let isRateLimited = false;
 
-      const thinkingInterval = setInterval(() => {
-        spinIndex = (spinIndex + 1) % spinFrames.length;
-        state.textContent = `${spinFrames[spinIndex]} thinking`;
-      }, 80);
+      for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+        input.value = question;
+        input.disabled = true;
+        submit.disabled = true;
+        answer.textContent = "";
+        questionEl?.classList.add("hidden");
+        const startTime = Date.now();
+        const spinFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+        let spinIndex = 0;
+        state.textContent = `${spinFrames[0]} thinking`;
 
-      function stopThinking() {
-        clearInterval(thinkingInterval);
-      }
+        const thinkingInterval = setInterval(() => {
+          spinIndex = (spinIndex + 1) % spinFrames.length;
+          state.textContent = `${spinFrames[spinIndex]} thinking`;
+        }, 80);
 
-      try {
-        const response = await fetch("/api/ask", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ question }),
-        });
+        const stopThinking = () => clearInterval(thinkingInterval);
+        let success = false;
 
-        if (response.status === 429) {
-          stopThinking();
-          state.textContent = "";
-          answer.textContent = ASK_MIHALY_RATE_LIMIT_MESSAGE;
-          return;
-        }
+        try {
+          const response = await fetch("/api/ask", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ question }),
+          });
 
-        if (!response.ok || !response.body) {
-          throw new Error("Ask Mihaly request failed.");
-        }
-
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let receivedChunk = false;
-
-        while (true) {
-          const { done, value } = await reader.read();
-
-          if (done) {
+          if (response.status === 429) {
+            stopThinking();
+            state.textContent = "";
+            answer.textContent = ASK_MIHALY_RATE_LIMIT_MESSAGE;
+            isRateLimited = true;
             break;
           }
 
-          const chunk = decoder.decode(value, { stream: true });
+          if (!response.ok || !response.body) {
+            throw new Error("Ask Mihaly request failed.");
+          }
 
-          if (chunk.length > 0) {
-            if (!receivedChunk) {
-              receivedChunk = true;
-              stopThinking();
-              const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-              state.textContent = `+ thought: ${elapsed}s`;
-              if (questionEl) {
-                questionEl.textContent = question;
-                questionEl.classList.remove("hidden");
-              }
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder();
+          let receivedChunk = false;
+
+          while (true) {
+            const { done, value } = await reader.read();
+
+            if (done) {
+              break;
             }
 
-            answer.textContent += chunk;
+            const chunk = decoder.decode(value, { stream: true });
+
+            if (chunk.length > 0) {
+              if (!receivedChunk) {
+                receivedChunk = true;
+                stopThinking();
+                const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+                state.textContent = `+ thought: ${elapsed}s`;
+                if (questionEl) {
+                  questionEl.textContent = question;
+                  questionEl.classList.remove("hidden");
+                }
+              }
+
+              answer.textContent += chunk;
+            }
           }
-        }
 
-        const finalChunk = decoder.decode();
+          const finalChunk = decoder.decode();
 
-        if (finalChunk.length > 0) {
-          answer.textContent += finalChunk;
-        }
+          if (finalChunk.length > 0) {
+            answer.textContent += finalChunk;
+          }
 
-        if (!receivedChunk && answer.textContent.trim().length === 0) {
+          if (!receivedChunk && answer.textContent.trim().length === 0) {
+            throw new Error("Ask Mihaly request failed.");
+          }
+
+          success = true;
+        } catch {
           stopThinking();
-          answer.textContent = ASK_MIHALY_FALLBACK;
-          return;
         }
-      } catch {
-        stopThinking();
-        state.textContent = "";
-        answer.textContent = ASK_MIHALY_FALLBACK;
-        return;
+
+        if (success) {
+          break;
+        }
+
+        if (attempt < MAX_RETRIES) {
+          state.textContent = `retrying (${attempt + 1}/${MAX_RETRIES})...`;
+          await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+        } else {
+          state.textContent = "";
+          answer.textContent = ASK_MIHALY_FALLBACK;
+        }
       }
 
-      input.value = "";
-      syncCursorPosition();
-      input.disabled = false;
-      submit.disabled = false;
-      input.focus();
+      if (!isRateLimited) {
+        input.value = "";
+        syncCursorPosition();
+        input.disabled = false;
+        submit.disabled = false;
+        input.focus();
+      }
     });
   }
 </script>
