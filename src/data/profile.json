@@ -6,8 +6,8 @@
     "email": "mihaly@mihaly.dev"
   },
   "summary": [
-    "I love to code, solve problems, and build. I'm a Typescript-React enjoyer and a stan for the new school ecosystem around it.",
-    "More of a luthier than a lumberjack when it comes to coding, but never afraid to get my hands dirty. I do believe agentic coding is the present, but the deep human understanding of a problem space and the World surrounding it is irreplaceable.",
+    "I love to code, solve problems, and build. I'm a TypeScript-React enjoyer and a stan for the new school ecosystem around it.",
+    "More of a luthier than a lumberjack when it comes to coding, but never afraid to get my hands dirty. I do believe agentic coding is the present, but the deep human understanding of a problem space and the world surrounding it is irreplaceable.",
     "A little bit addicted to coffee and online chess. Started learning math and comp-sci again. I want to know how the sausage is made, from first principles."
   ],
   "skills": [
@@ -87,7 +87,7 @@
       "dates": "Mar 2023 - Sep 2025",
       "duration": "2 yrs 7 mos",
       "location": "",
-      "description": "I was part of the \"Foundations\" team Built features around search, user management and data insights Introduced a new design system and component library Lead modularization effort on the front-end",
+      "description": "I was part of the \"Foundations\" team. Built features around search, user management and data insights. Introduced a new design system and component library. Led modularization effort on the front-end",
       "startedOn": "Mar 2023",
       "finishedOn": "Sep 2025",
       "source": "linkedin"
@@ -98,7 +98,7 @@
       "dates": "Aug 2021 - Mar 2023",
       "duration": "1 yr 8 mos",
       "location": "",
-      "description": "As a solo dev I was responsible for the \"Replay App\", a video viewing and annotating platform Built a custom video player with live streaming, offline playback, and an interactive annotation tool Rearchitected and rebuilt existing parts of the platform",
+      "description": "As a solo dev I was responsible for the \"Replay App\", a video viewing and annotating platform. Built a custom video player with live streaming, offline playback, and an interactive annotation tool. Rearchitected and rebuilt existing parts of the platform",
       "startedOn": "Aug 2021",
       "finishedOn": "Mar 2023",
       "source": "linkedin"
@@ -109,7 +109,7 @@
       "dates": "Aug 2020 - Aug 2021",
       "duration": "1 yr 1 mo",
       "location": "",
-      "description": "Worked on decoupling the \"admin\" interface from a PHP monolith I was the product owner responsible for the day-to-day operation and rituals of a cross-functional team of 6",
+      "description": "Worked on decoupling the \"admin\" interface from a PHP monolith. I was the product owner responsible for the day-to-day operation and rituals of a cross-functional team of 6",
       "startedOn": "Aug 2020",
       "finishedOn": "Aug 2021",
       "source": "linkedin"
@@ -120,7 +120,7 @@
       "dates": "Jan 2020 - Aug 2020",
       "duration": "8 mos",
       "location": "",
-      "description": "Worked mostly on the frontend and a bit on the backend of a factoring service for an early-stage fintech startup Dabbled in being the product owner for a small team of 3",
+      "description": "Worked mostly on the frontend and a bit on the backend of a factoring service for an early-stage fintech startup. Dabbled in being the product owner for a small team of 3",
       "startedOn": "Jan 2020",
       "finishedOn": "Aug 2020",
       "source": "linkedin"
@@ -142,7 +142,7 @@
       "dates": "Apr 2017 - Dec 2019",
       "duration": "2 yrs 9 mos",
       "location": "",
-      "description": "I was part of the \"Chain Bridge\" team Worked on integration, automation, and tooling for all of Prezi's go-to-market teams Worked on licensing and payment systems",
+      "description": "I was part of the \"Chain Bridge\" team. Worked on integration, automation, and tooling for all of Prezi's go-to-market teams. Worked on licensing and payment systems",
       "startedOn": "Apr 2017",
       "finishedOn": "Dec 2019",
       "source": "linkedin"
