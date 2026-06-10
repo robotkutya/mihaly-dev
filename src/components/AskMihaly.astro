@@ -12,14 +12,13 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
       class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 text-base md:text-xl"
     >
       <span class="text-primary-green" aria-hidden="true">&gt;</span>
-      <div class="relative">
+      <div class="relative ask-mihaly-input-wrapper">
         <input
           id="ask-mihaly-question"
           name="question"
           type="text"
           maxlength={ASK_MIHALY_QUESTION_MAX_LENGTH}
           autocomplete="off"
-          autofocus
           data-ask-mihaly-input
           class="ask-mihaly-input w-full bg-transparent text-primary-black outline-none caret-transparent"
         />
@@ -59,11 +58,12 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
 
 <style>
   .ask-mihaly-cursor {
-    animation: none;
+    animation: ask-mihaly-blink 1s steps(1, end) infinite;
   }
 
-  .ask-mihaly-input:focus + .ask-mihaly-cursor {
-    animation: ask-mihaly-blink 1s steps(1, end) infinite;
+  .ask-mihaly-input-wrapper:focus-within {
+    outline: 2px solid var(--color-primary-yellow);
+    outline-offset: 2px;
   }
 
   .ask-mihaly-input:disabled {
