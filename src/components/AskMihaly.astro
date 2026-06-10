@@ -120,10 +120,7 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
   if (input) {
     input.addEventListener("input", syncCursorPosition);
     input.addEventListener("keyup", syncCursorPosition);
-    input.addEventListener("click", syncCursorPosition);
-    input.addEventListener("focus", syncCursorPosition);
-    document.addEventListener("selectionchange", syncCursorPosition);
-    syncCursorPosition();
+    requestAnimationFrame(syncCursorPosition);
   }
 
   if (
