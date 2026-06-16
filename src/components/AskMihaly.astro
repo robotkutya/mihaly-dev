@@ -65,11 +65,9 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
     --ask-mihaly-window-bg: color-mix(in srgb, var(--color-page) 35%, white);
 
     background: var(--ask-mihaly-window-bg);
-    border: 1px solid color-mix(in srgb, var(--color-primary-light-gray) 32%, transparent);
     opacity: 0.64;
     transition:
       background-color 160ms ease,
-      border-color 160ms ease,
       opacity 160ms ease;
   }
 
@@ -173,6 +171,14 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
     state instanceof HTMLElement &&
     answer instanceof HTMLElement
   ) {
+    form.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("[data-ask-mihaly-submit]")) {
+        return;
+      }
+
+      focusInput();
+    });
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -180,6 +186,7 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
 
       if (!question) {
         state.textContent = "";
+        focusInput();
         return;
       }
 
