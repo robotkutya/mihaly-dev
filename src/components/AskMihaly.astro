@@ -3,10 +3,14 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
 ---
 
 <section
-  class="font-silkscreen my-8 md:my-10 py-5 md:py-6"
+  class="font-silkscreen my-8 md:my-10"
   aria-label="Ask Mihaly"
 >
-  <form data-ask-mihaly-form class="space-y-4">
+  <form
+    data-ask-mihaly-form
+    data-ask-mihaly-oracle
+    class="ask-mihaly-window flex min-h-72 flex-col gap-4 px-6 py-7 md:min-h-80 md:px-8 md:py-9"
+  >
     <label class="sr-only" for="ask-mihaly-question">Ask Mihaly</label>
     <div
       class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 text-base md:text-xl"
@@ -32,7 +36,7 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
       <button
         type="submit"
         data-ask-mihaly-submit
-        class="text-sm md:text-base outline-hidden ring-offset-4 ring-offset-[var(--color-page)] ring-transparent ring-4 transition-colors hover:text-primary-yellow focus:text-primary-yellow focus:ring-primary-yellow disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+        class="ask-mihaly-submit px-2 py-1 text-sm md:text-base outline-hidden transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
       >
         ask <span class="text-primary-yellow">↵</span>
       </button>
@@ -57,13 +61,45 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
 </section>
 
 <style>
-  .ask-mihaly-cursor {
-    animation: ask-mihaly-blink 1s steps(1, end) infinite;
+  .ask-mihaly-window {
+    --ask-mihaly-window-bg: color-mix(in srgb, var(--color-page) 35%, white);
+
+    background: var(--ask-mihaly-window-bg);
+    border: 1px solid color-mix(in srgb, var(--color-primary-light-gray) 32%, transparent);
+    opacity: 0.64;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      opacity 160ms ease;
   }
 
-  .ask-mihaly-input-wrapper:focus-within {
-    outline: 2px solid var(--color-primary-yellow);
-    outline-offset: 2px;
+  .ask-mihaly-window:focus-within {
+    opacity: 1;
+  }
+
+  :global(:root[data-theme="dark"]) .ask-mihaly-window {
+    --ask-mihaly-window-bg: color-mix(in srgb, var(--color-page) 88%, white);
+  }
+
+  .ask-mihaly-submit {
+    background: var(--ask-mihaly-window-bg);
+  }
+
+  .ask-mihaly-submit:hover {
+    background: var(--color-primary-yellow);
+    color: var(--color-page);
+  }
+
+  .ask-mihaly-submit:hover span {
+    color: var(--color-page);
+  }
+
+  .ask-mihaly-cursor {
+    animation: none;
+  }
+
+  .ask-mihaly-input-wrapper:focus-within .ask-mihaly-cursor {
+    animation: ask-mihaly-blink 1s steps(1, end) infinite;
   }
 
   .ask-mihaly-input:disabled {
@@ -117,10 +153,17 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
     cursor.style.left = `${textWidth + paddingLeft - input.scrollLeft}px`;
   }
 
+  function focusInput() {
+    if (!input || input.disabled) return;
+    input.focus({ preventScroll: true });
+    syncCursorPosition();
+  }
+
   if (input) {
     input.addEventListener("input", syncCursorPosition);
     input.addEventListener("keyup", syncCursorPosition);
-    requestAnimationFrame(syncCursorPosition);
+    input.addEventListener("focus", syncCursorPosition);
+    requestAnimationFrame(focusInput);
   }
 
   if (
@@ -136,7 +179,7 @@ import { ASK_MIHALY_QUESTION_MAX_LENGTH } from "../lib/ai-widget/constants";
       const question = input.value.trim().slice(0, input.maxLength);
 
       if (!question) {
-        state.textContent = "try asking about mihaly";
+        state.textContent = "";
         return;
       }
 
